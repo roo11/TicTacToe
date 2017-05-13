@@ -1,5 +1,6 @@
 package GUI;
 
+import Main.GameEngine;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,17 +12,15 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Board extends Application {
+public class Board {
 
     StackPane boardStackPane = new StackPane();
     Scene boardScene = new Scene(boardStackPane);
 
-    public static void main(String[] args) {
-        launch(args);
+    public Board(GameEngine gameEngine) {
     }
 
-    @Override
-    public void start(Stage primaryStage) {
+    public void start() {
 
         //Sets up the board
         Stage boardStage = new Stage();
