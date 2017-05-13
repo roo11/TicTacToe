@@ -40,7 +40,18 @@ public class Board extends Application {
         //Setting up Buttons for game
         for (int i = 0; i < 3; i++) {
             Button button = new Button(String.valueOf(i));
+            button.setPrefSize(128,128);
             row1.getChildren().add(button);
+        }
+        for (int i = 0; i < 3; i++) {
+            Button button = new Button(String.valueOf(i));
+            button.setPrefSize(128,128);
+            row2.getChildren().add(button);
+        }
+        for (int i = 0; i < 3; i++) {
+            Button button = new Button(String.valueOf(i));
+            button.setPrefSize(128,128);
+            row3.getChildren().add(button);
         }
 
 
