@@ -1,6 +1,6 @@
 package GUI;
 
-import javafx.application.Application;
+import Main.GameEngine;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,17 +11,17 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Board extends Application {
+public class Board {
+    GameEngine gameEngine;
 
     StackPane boardStackPane = new StackPane();
     Scene boardScene = new Scene(boardStackPane);
 
-    public static void main(String[] args) {
-        launch(args);
+    public Board(GameEngine gameEngine) {
+        this.gameEngine = gameEngine;
     }
 
-    @Override
-    public void start(Stage primaryStage) {
+    public void start() {
 
         //Sets up the board
         Stage boardStage = new Stage();
@@ -40,37 +40,28 @@ public class Board extends Application {
         turnInfo.getChildren().add(playerInfo);
 
         //Setting up Buttons for game
-        for (int i = 0; i < 3; i++) {
-            Button button = new Button();
-            button.setPrefSize(128,128);
-            button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
-            button.setOnAction(event -> {
-                button.setGraphic(new ImageView(new Image("Resources/X.png")));
-            });
-            row1.getChildren().add(button);
-        }
-        for (int i = 0; i < 3; i++) {
-            Button button = new Button();
-            button.setPrefSize(128,128);
-            button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
-            button.setOnAction(event -> {
-                button.setGraphic(new ImageView(new Image("Resources/X.png")));
-            });
-            row2.getChildren().add(button);
-        }
-        for (int i = 0; i < 3; i++) {
-            Button button = new Button();
-            button.setPrefSize(128,128);
-            button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
-            button.setOnAction(event -> {
-                button.setGraphic(new ImageView(new Image("Resources/X.png")));
-            });
-            row3.getChildren().add(button);
-        }
+        buttonSetup(row1,0);
+        buttonSetup(row2,1);
+        buttonSetup(row3,2);
 
 
         //Finalising and displaying the board
         boardStackPane.getChildren().addAll(rows);
         boardStage.show();
+    }
+
+    private void buttonSetup(HBox row, int yValue){
+        for (int i = 0; i < 3; i++) {
+            int xValue = i;
+            Button button = new Button();
+            button.setPrefSize(128,128);
+            button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
+            button.setOnAction(event -> {
+                button.setGraphic(new ImageView(new Image("Resources/X.png")));
+                gameEngine.getBoardArray()[xValue][yValue]='x';
+                System.out.println(gameEngine.toString());
+            });
+            row.getChildren().add(button);
+        }
     }
 }
