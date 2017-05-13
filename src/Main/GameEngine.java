@@ -4,6 +4,8 @@ import GUI.Board;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.util.Arrays;
+
 /**
  * Created by Josh on 13/05/2017.
  */
@@ -23,5 +25,16 @@ public class GameEngine extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         board.start();
+    }
+
+    public char[][] getBoardArray() {
+        return boardArray;
+    }
+
+    @Override
+    public String toString() {
+        return "GameEngine{" +
+                "boardArray=" + Arrays.toString(boardArray) +
+                '}';
     }
 }
