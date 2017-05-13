@@ -4,7 +4,9 @@
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Board extends Application {
@@ -22,6 +24,13 @@ public class Board extends Application {
         //Sets up the board
         Stage boardStage = new Stage();
         boardStage.setScene(boardScene);
+
+        //Setting up Boxes
+        VBox rows = new VBox();
+        HBox turnInfo = new HBox();
+        HBox row1 = new HBox();
+        HBox row2 = new HBox();
+        HBox row3 = new HBox();
 
 
         //Finalising and displaying the board
