@@ -40,46 +40,28 @@ public class Board {
         turnInfo.getChildren().add(playerInfo);
 
         //Setting up Buttons for game
-        for (int i = 0; i < 3; i++) {
-            int xValue = i;
-            Button button = new Button();
-            button.setPrefSize(128,128);
-            button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
-            button.setOnAction(event -> {
-                button.setGraphic(new ImageView(new Image("Resources/X.png")));
-                gameEngine.getBoardArray()[xValue][0]='x';
-            });
-            row1.getChildren().add(button);
-            gameEngine.toString();
-        }
-        for (int i = 0; i < 3; i++) {
-            int xValue = i;
-            Button button = new Button();
-            button.setPrefSize(128,128);
-            button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
-            button.setOnAction(event -> {
-                button.setGraphic(new ImageView(new Image("Resources/X.png")));
-                gameEngine.getBoardArray()[xValue][1]='x';
-            });
-            row2.getChildren().add(button);
-            gameEngine.toString();
-        }
-        for (int i = 0; i < 3; i++) {
-            int xValue = i;
-            Button button = new Button();
-            button.setPrefSize(128,128);
-            button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
-            button.setOnAction(event -> {
-                button.setGraphic(new ImageView(new Image("Resources/X.png")));
-                gameEngine.getBoardArray()[xValue][2]='x';
-            });
-            row3.getChildren().add(button);
-            gameEngine.toString();
-        }
+        buttonSetup(row1,0);
+        buttonSetup(row2,1);
+        buttonSetup(row3,2);
 
 
         //Finalising and displaying the board
         boardStackPane.getChildren().addAll(rows);
         boardStage.show();
+    }
+
+    private void buttonSetup(HBox row, int yValue){
+        for (int i = 0; i < 3; i++) {
+            int xValue = i;
+            Button button = new Button();
+            button.setPrefSize(128,128);
+            button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
+            button.setOnAction(event -> {
+                button.setGraphic(new ImageView(new Image("Resources/X.png")));
+                gameEngine.getBoardArray()[xValue][yValue]='x';
+                System.out.println(gameEngine.toString());
+            });
+            row.getChildren().add(button);
+        }
     }
 }

@@ -4,8 +4,6 @@ import GUI.Board;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.util.Arrays;
-
 /**
  * Created by Josh on 13/05/2017.
  */
@@ -33,8 +31,9 @@ public class GameEngine extends Application{
 
     @Override
     public String toString() {
-        return "GameEngine{" +
-                "boardArray=" + Arrays.toString(boardArray) +
-                '}';
+
+        return "\n" + getBoardArray()[0][0] + getBoardArray()[1][0] + getBoardArray()[2][0] + "\n" +
+                getBoardArray()[0][1] + getBoardArray()[1][1] + getBoardArray()[2][1] + "\n" +
+                getBoardArray()[0][2] + getBoardArray()[1][2] + getBoardArray()[2][2];
     }
 }
