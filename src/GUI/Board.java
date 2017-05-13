@@ -45,7 +45,7 @@ public class Board extends Application {
             button.setPrefSize(128,128);
             button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
             button.setOnAction(event -> {
-
+                button.setGraphic(new ImageView(new Image("Resources/X.png")));
             });
             row1.getChildren().add(button);
         }
@@ -53,12 +53,18 @@ public class Board extends Application {
             Button button = new Button();
             button.setPrefSize(128,128);
             button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
+            button.setOnAction(event -> {
+                button.setGraphic(new ImageView(new Image("Resources/X.png")));
+            });
             row2.getChildren().add(button);
         }
         for (int i = 0; i < 3; i++) {
             Button button = new Button();
             button.setPrefSize(128,128);
             button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
+            button.setOnAction(event -> {
+                button.setGraphic(new ImageView(new Image("Resources/X.png")));
+            });
             row3.getChildren().add(button);
         }
 
