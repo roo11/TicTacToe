@@ -6,6 +6,32 @@ package GUI;
 
 public class StateMachine {
 
+    public class Player {
+        char type;
+        int player;
+
+        public Player() {
+            type = 'X';
+            player = 1;
+        }
+    }
+
+    Player player1 = new Player();
+    Player player2 = new Player();
+
+    Player currrentPlayer = new Player();
+
+
+    public void playerTurn(){
+
+        if(currrentPlayer == player1){
+            currrentPlayer == player2;
+        }else{
+            currrentPlayer == player1;
+
+        }
+    }
+
     char[][] board = new char[3][3];
 
 
