@@ -17,6 +17,8 @@ public class Board {
     StackPane boardStackPane = new StackPane();
     Scene boardScene = new Scene(boardStackPane);
 
+    Label player = new Label();
+
     public Board(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
     }
@@ -37,7 +39,7 @@ public class Board {
 
         //Label for the player info
         Label playerInfo = new Label("Players turn: ");
-        Label player = new Label();
+        player.textProperty().set(String.valueOf(this.getGameEngine().getStateMachine().getCurrentPlayer().getLetter()));
         turnInfo.getChildren().addAll(playerInfo, player);
 
         //Setting up Buttons for game
@@ -62,7 +64,7 @@ public class Board {
                     button.setGraphic(new ImageView(new Image("Resources/X.png")));
                     gameEngine.getBoardArray()[xValue][yValue] = 'X';
                     System.out.println(gameEngine.toString());
-                }else if (this.getGameEngine().getStateMachine().getCurrentPlayer().getLetter() == 'O') {
+                } else if (this.getGameEngine().getStateMachine().getCurrentPlayer().getLetter() == 'O') {
                     button.setGraphic(new ImageView(new Image("Resources/O.png")));
                     gameEngine.getBoardArray()[xValue][yValue] = 'O';
                     System.out.println(gameEngine.toString());
@@ -75,5 +77,9 @@ public class Board {
 
     public GameEngine getGameEngine() {
         return gameEngine;
+    }
+
+    public Label getPlayer() {
+        return player;
     }
 }

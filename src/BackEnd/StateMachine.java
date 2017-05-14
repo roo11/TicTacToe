@@ -25,13 +25,13 @@ public class StateMachine {
             this.setCurrentPlayer(player2);
         } else {
             this.setCurrentPlayer(player1);
-        }
+        }this.getGameEngine().getBoard().getPlayer().textProperty().set(String.valueOf(currentPlayer.getLetter()));
     }
 
     boolean checkBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (this.getGameEngine().getBoardArray()[i][j]==' ') {
+                if (this.getGameEngine().getBoardArray()[i][j] == ' ') {
                     return true;
                 }
             }
@@ -111,9 +111,5 @@ public class StateMachine {
 
     public GameEngine getGameEngine() {
         return gameEngine;
-    }
-
-    public void setGameEngine(GameEngine gameEngine) {
-        this.gameEngine = gameEngine;
     }
 }
