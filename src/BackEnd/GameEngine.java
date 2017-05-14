@@ -1,4 +1,4 @@
-package Main;
+package BackEnd;
 
 import GUI.Board;
 import javafx.application.Application;
@@ -9,11 +9,13 @@ import javafx.stage.Stage;
  */
 public class GameEngine extends Application{
     Board board;
+    StateMachine stateMachine;
     char[][] boardArray;
 
     public GameEngine(){
         boardArray = new char[3][3];
         board = new Board(this);
+        stateMachine = new StateMachine(this,this.getBoardArray());
     }
 
     public static void main(String[] args) {
