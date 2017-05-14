@@ -19,7 +19,7 @@ public class GameEngine extends Application{
         stateMachine = new StateMachine(this);
     }
 
-    private void populateBoard() {
+    void populateBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 this.getBoardArray()[i][j] = ' ';

@@ -72,12 +72,14 @@ public class StateMachine {
 
     private void winner(Player player) {
         System.out.print(this.currentPlayer.getLetter() + " is winner");
+        this.getGameEngine().populateBoard();
         this.getGameEngine().getBoard().restart();
     }
 
 
     void draw() {
         System.out.print(" Nobody Won");
+        this.getGameEngine().populateBoard();
         this.getGameEngine().getBoard().restart();
     }
 
