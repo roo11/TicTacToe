@@ -15,4 +15,8 @@ public class Player {
     public Player(){
 
     }
+
+    public char getLetter() {
+        return letter;
+    }
 }

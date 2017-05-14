@@ -33,16 +33,17 @@ public class Board {
         HBox row1 = new HBox();
         HBox row2 = new HBox();
         HBox row3 = new HBox();
-        rows.getChildren().addAll(turnInfo,row1,row2,row3);
+        rows.getChildren().addAll(turnInfo, row1, row2, row3);
 
         //Label for the player info
-        Label playerInfo = new Label("Dynamic player info will go here");
-        turnInfo.getChildren().add(playerInfo);
+        Label playerInfo = new Label("Players turn: ");
+        Label player = new Label();
+        turnInfo.getChildren().addAll(playerInfo, player);
 
         //Setting up Buttons for game
-        buttonSetup(row1,0);
-        buttonSetup(row2,1);
-        buttonSetup(row3,2);
+        buttonSetup(row1, 0);
+        buttonSetup(row2, 1);
+        buttonSetup(row3, 2);
 
 
         //Finalising and displaying the board
@@ -50,18 +51,29 @@ public class Board {
         boardStage.show();
     }
 
-    private void buttonSetup(HBox row, int yValue){
+    private void buttonSetup(HBox row, int yValue) {
         for (int i = 0; i < 3; i++) {
             int xValue = i;
             Button button = new Button();
-            button.setPrefSize(128,128);
+            button.setPrefSize(128, 128);
             button.setGraphic(new ImageView(new Image("Resources/Blank.png")));
             button.setOnAction(event -> {
-                button.setGraphic(new ImageView(new Image("Resources/X.png")));
-                gameEngine.getBoardArray()[xValue][yValue]='x';
-                System.out.println(gameEngine.toString());
+                if (this.getGameEngine().getStateMachine().getCurrentPlayer().getLetter() == 'X') {
+                    button.setGraphic(new ImageView(new Image("Resources/X.png")));
+                    gameEngine.getBoardArray()[xValue][yValue] = 'X';
+                    System.out.println(gameEngine.toString());
+                }else if (this.getGameEngine().getStateMachine().getCurrentPlayer().getLetter() == 'O') {
+                    button.setGraphic(new ImageView(new Image("Resources/O.png")));
+                    gameEngine.getBoardArray()[xValue][yValue] = 'O';
+                    System.out.println(gameEngine.toString());
+                }
+                this.getGameEngine().getStateMachine().turn();
             });
             row.getChildren().add(button);
         }
+    }
+
+    public GameEngine getGameEngine() {
+        return gameEngine;
     }
 }
