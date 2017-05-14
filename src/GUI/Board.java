@@ -86,6 +86,6 @@ public class Board {
     public void restart() {
         this.boardStage.close();
         this.boardStackPane.getChildren().clear();
-        this.boardStage.show();
+        this.start();
     }
 }

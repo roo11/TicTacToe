@@ -25,7 +25,8 @@ public class StateMachine {
             this.setCurrentPlayer(player2);
         } else {
             this.setCurrentPlayer(player1);
-        }this.getGameEngine().getBoard().getPlayer().textProperty().set(String.valueOf(currentPlayer.getLetter()));
+        }
+        this.getGameEngine().getBoard().getPlayer().textProperty().set(String.valueOf(currentPlayer.getLetter()));
     }
 
     boolean checkBoard() {
@@ -40,11 +41,7 @@ public class StateMachine {
     }
 
     public void logic() {
-
-        if (checkBoard()) {
-            this.switchPlayer();
-
-        } else if (this.getGameEngine().getBoardArray()[0][0] == 'X' && this.getGameEngine().getBoardArray()[0][1] == 'X' && this.getGameEngine().getBoardArray()[0][2] == 'X'
+        if (this.getGameEngine().getBoardArray()[0][0] == 'X' && this.getGameEngine().getBoardArray()[0][1] == 'X' && this.getGameEngine().getBoardArray()[0][2] == 'X'
                 || this.getGameEngine().getBoardArray()[1][0] == 'X' && this.getGameEngine().getBoardArray()[1][1] == 'X' && this.getGameEngine().getBoardArray()[1][2] == 'X'
                 || this.getGameEngine().getBoardArray()[2][0] == 'X' && this.getGameEngine().getBoardArray()[2][1] == 'X' && this.getGameEngine().getBoardArray()[2][2] == 'X'
 
@@ -66,12 +63,14 @@ public class StateMachine {
                 || this.getGameEngine().getBoardArray()[0][0] == 'O' && this.getGameEngine().getBoardArray()[1][1] == 'O' && this.getGameEngine().getBoardArray()[2][2] == 'O'
                 || this.getGameEngine().getBoardArray()[0][2] == 'O' && this.getGameEngine().getBoardArray()[1][1] == 'O' && this.getGameEngine().getBoardArray()[2][0] == 'O') {
             winner(player2);
+        } else if (checkBoard()) {
+            this.switchPlayer();
         } else {
             draw();
         }
     }
 
-    private void winner(Player player){
+    private void winner(Player player) {
         System.out.print(this.currentPlayer.getLetter() + " is winner");
         this.getGameEngine().getBoard().restart();
     }
