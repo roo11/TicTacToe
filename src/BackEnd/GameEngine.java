@@ -14,8 +14,17 @@ public class GameEngine extends Application{
 
     public GameEngine(){
         boardArray = new char[3][3];
+        this.populateBoard();
         board = new Board(this);
         stateMachine = new StateMachine(this);
+    }
+
+    private void populateBoard() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                this.getBoardArray()[i][j] = ' ';
+            }
+        }
     }
 
     public static void main(String[] args) {

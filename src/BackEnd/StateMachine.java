@@ -31,7 +31,7 @@ public class StateMachine {
     boolean checkBoard() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (String.valueOf(this.getGameEngine().getBoardArray()[i][j]) == "") {
+                if (this.getGameEngine().getBoardArray()[i][j]==' ') {
                     return true;
                 }
             }
