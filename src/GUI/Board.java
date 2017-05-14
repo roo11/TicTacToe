@@ -14,10 +14,11 @@ import javafx.stage.Stage;
 public class Board {
     GameEngine gameEngine;
 
-    StackPane boardStackPane = new StackPane();
-    Scene boardScene = new Scene(boardStackPane);
+    private StackPane boardStackPane = new StackPane();
+    private Scene boardScene = new Scene(boardStackPane);
+    private Stage boardStage = new Stage();
 
-    Label player = new Label();
+    private Label player = new Label();
 
     public Board(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
@@ -26,7 +27,6 @@ public class Board {
     public void start() {
 
         //Sets up the board
-        Stage boardStage = new Stage();
         boardStage.setScene(boardScene);
 
         //Setting up Boxes
@@ -81,5 +81,11 @@ public class Board {
 
     public Label getPlayer() {
         return player;
+    }
+
+    public void restart() {
+        this.boardStage.close();
+        this.boardStackPane.getChildren().clear();
+        this.boardStage.show();
     }
 }

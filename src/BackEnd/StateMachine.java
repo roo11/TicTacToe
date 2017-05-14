@@ -17,7 +17,7 @@ public class StateMachine {
     }
 
     public void turn() {
-        this.action(this.logic());
+        this.logic();
     }
 
     public void switchPlayer() {
@@ -39,10 +39,10 @@ public class StateMachine {
         return false;
     }
 
-    public int logic() {
+    public void logic() {
 
         if (checkBoard()) {
-            return 1;
+            this.switchPlayer();
 
         } else if (this.getGameEngine().getBoardArray()[0][0] == 'X' && this.getGameEngine().getBoardArray()[0][1] == 'X' && this.getGameEngine().getBoardArray()[0][2] == 'X'
                 || this.getGameEngine().getBoardArray()[1][0] == 'X' && this.getGameEngine().getBoardArray()[1][1] == 'X' && this.getGameEngine().getBoardArray()[1][2] == 'X'
@@ -54,9 +54,7 @@ public class StateMachine {
 
                 || this.getGameEngine().getBoardArray()[0][0] == 'X' && this.getGameEngine().getBoardArray()[1][1] == 'X' && this.getGameEngine().getBoardArray()[2][2] == 'X'
                 || this.getGameEngine().getBoardArray()[0][2] == 'X' && this.getGameEngine().getBoardArray()[1][1] == 'X' && this.getGameEngine().getBoardArray()[2][0] == 'X') {
-            System.out.print("X is winner");
-
-            return 2;
+            winner(player1);
         } else if (this.getGameEngine().getBoardArray()[0][0] == 'O' && this.getGameEngine().getBoardArray()[0][1] == 'O' && this.getGameEngine().getBoardArray()[0][2] == 'O'
                 || this.getGameEngine().getBoardArray()[1][0] == 'O' && this.getGameEngine().getBoardArray()[1][1] == 'O' && this.getGameEngine().getBoardArray()[1][2] == 'O'
                 || this.getGameEngine().getBoardArray()[2][0] == 'O' && this.getGameEngine().getBoardArray()[2][1] == 'O' && this.getGameEngine().getBoardArray()[2][2] == 'O'
@@ -67,38 +65,21 @@ public class StateMachine {
 
                 || this.getGameEngine().getBoardArray()[0][0] == 'O' && this.getGameEngine().getBoardArray()[1][1] == 'O' && this.getGameEngine().getBoardArray()[2][2] == 'O'
                 || this.getGameEngine().getBoardArray()[0][2] == 'O' && this.getGameEngine().getBoardArray()[1][1] == 'O' && this.getGameEngine().getBoardArray()[2][0] == 'O') {
-            System.out.print("O is winner");
-
-            return 3;
+            winner(player2);
         } else {
-            return 4;
+            draw();
         }
     }
 
-    public void action(int stateNumber) {
-        switch (stateNumber) {
-            case 1:
-                this.switchPlayer();
-            case 2:
-                WinnerX();
-            case 3:
-                WinnerO();
-            case 4:
-                Draw();
-
-        }
+    private void winner(Player player){
+        System.out.print(this.currentPlayer.getLetter() + " is winner");
+        this.getGameEngine().getBoard().restart();
     }
 
-    void WinnerX() {
 
-    }
-
-    void WinnerO() {
-
-    }
-
-    void Draw() {
-
+    void draw() {
+        System.out.print(" Nobody Won");
+        this.getGameEngine().getBoard().restart();
     }
 
     public Player getCurrentPlayer() {
